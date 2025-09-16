@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produtos - Fórmula 1</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #121212;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #e10600;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    header h1 {
+      font-size: 3em;
+      color: #ffffff;
+    }
+
+    nav {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #121212;
+    }
+
+    .produtos {
+      margin-top: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .produto-item {
+      display: inline-block;
+      margin: 10px;
+      text-align: center;
+      background: #333;
+      padding: 20px;
+      border-radius: 8px;
+      width: 220px;
+      transition: transform 0.3s ease;
+    }
+
+    .produto-item:hover {
+      transform: translateY(-10px);
+    }
+
+    .produto-item img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .produto-item h3 {
+      margin-top: 10px;
+      color: #e10600;
+    }
+
+    .produto-item p {
+      font-size: 1.1em;
+      color: #f0f0f0;
+      margin: 10px 0;
+    }
+
+    .produto-item button {
+      background-color: #e10600;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .produto-item button:hover {
+      background-color: #b40400;
+    }
+
+    .separador-categoria {
+      margin-top: 30px;
+      width: 100%;
+      text-align: center;
+      font-size: 1.5em;
+      color: #e10600;
+      margin-bottom: 20px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Loja Fórmula 1</h1>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="carrinho.html">Carrinho (0)</a>
+    </nav>
+  </header>
+
+  <section class="produtos">
+    
+    <div class="separador-categoria">Camisas</div>
+
+    <div class="produto-item">
+      <img src="camisa_ferrari.png" alt="Produto 1">
+      <h3>Camiseta Ferrari</h3>
+      <p>R$ 250,00</p>
+      <button onclick="adicionarAoCarrinho('Camiseta Ferrari', 250.00, 'camisa_ferrari.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="camisa_alpine.png" alt="Produto 2">
+      <h3>Camiseta Alpine</h3>
+      <p>R$ 250,00</p>
+      <button onclick="adicionarAoCarrinho('Camiseta Alpine', 250.00, 'camisa_alpine.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="camisa_astonmartin.png" alt="Produto 3">
+      <h3>Camiseta Aston Martin</h3>
+      <p>R$ 250,00</p>
+      <button onclick="adicionarAoCarrinho('Camiseta Aston Martin', 250.00, 'camisa_astonmartin.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="camisa_haas.png" alt="Produto 4">
+      <h3>Camiseta Haas</h3>
+      <p>R$ 250,00</p>
+      <button onclick="adicionarAoCarrinho('Camiseta Haas', 250.00, 'camisa_haas.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="camisa_mclaren.png" alt="Produto 5">
+      <h3>Camiseta MacLaren</h3>
+      <p>R$ 250,00</p>
+      <button onclick="adicionarAoCarrinho('Camiseta MacLaren', 250.00, 'camisa_mclaren.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="camisa_mercedes.png" alt="Produto 6">
+      <h3>Camiseta Mercedes</h3>
+      <p>R$ 250,00</p>
+      <button onclick="adicionarAoCarrinho('Camiseta Mercedes', 250.00, 'camisa_mercedes.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="camisa_Racing Bulls.png" alt="Produto 7">
+      <h3>Camiseta RacingBulls</h3>
+      <p>R$ 250,00</p>
+      <button onclick="adicionarAoCarrinho('Camiseta RacingBulls', 250.00, 'camisa_Racing Bulls.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="camisa_Red Bull Racing.png" alt="Produto 8">
+      <h3>Camiseta Red Bull</h3>
+      <p>R$ 250,00</p>
+      <button onclick="adicionarAoCarrinho('Camiseta Red Bull', 250.00, 'camisa_Red Bull.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="camis_Sauber.png" alt="Produto 9">
+      <h3>Camiseta Sauber</h3>
+      <p>R$ 250,00</p>
+      <button onclick="adicionarAoCarrinho('Camiseta Sauber', 250.00, 'camis_Sauber.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="camisa_Williams.png" alt="Produto 10">
+      <h3>Camiseta Williams</h3>
+      <p>R$ 250,00</p>
+      <button onclick="adicionarAoCarrinho('Camiseta Williams', 250.00, 'camisa_Williams.png')">Adicionar ao Carrinho</button>
+    </div>
+    
+    <div class="separador-categoria">Bonés</div>
+
+    <div class="produto-item">
+      <img src="bone_ferrari.png" alt="Produto 11">
+      <h3>Boné Ferrari</h3>
+      <p>R$ 149,99</p>
+      <button onclick="adicionarAoCarrinho('Boné Ferrari', 149,99, 'bone_ferrari.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="bone_alpine.png" alt="Produto 11">
+      <h3>Boné Alpine</h3>
+      <p>R$ 149,99</p>
+      <button onclick="adicionarAoCarrinho('Boné Alpine', 149,99, 'bone_alpine.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="bone_astonMartin.png" alt="Produto 11">
+      <h3>Boné AstonMartin</h3>
+      <p>R$ 149,99</p>
+      <button onclick="adicionarAoCarrinho('Boné AstonMartin', 149,99, 'bone_astonMartin.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="bone_haas.png" alt="Produto 11">
+      <h3>Boné Haas</h3>
+      <p>R$ 149,99</p>
+      <button onclick="adicionarAoCarrinho('Boné Haas', 149,99, 'bone_haas.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="bone_mclaren.png" alt="Produto 11">
+      <h3>Boné MacLaren</h3>
+      <p>R$ 149,99</p>
+      <button onclick="adicionarAoCarrinho('Boné MacLaren', 149,99, 'bone_mclaren.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="bone_mercedes.png" alt="Produto 11">
+      <h3>Boné Mercedes</h3>
+      <p>R$ 149,99</p>
+      <button onclick="adicionarAoCarrinho('Boné Mercedes', 149,99, 'bone_mercedes.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="bone_bulls.png" alt="Produto 11">
+      <h3>Boné Bulls</h3>
+      <p>R$ 149,99</p>
+      <button onclick="adicionarAoCarrinho('Boné Bulls', 149,99, 'bone_bulls.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="bone_redbull.png" alt="Produto 11">
+      <h3>Boné Red Bull</h3>
+      <p>R$ 149,99</p>
+      <button onclick="adicionarAoCarrinho('Boné Red Bull', 149,99, 'bone_redbull.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="bone_sauber.png" alt="Produto 11">
+      <h3>Boné Sauber</h3>
+      <p>R$ 149,99</p>
+      <button onclick="adicionarAoCarrinho('Boné Sauber', 149,99, 'bone_sauber.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="bone_willims.png" alt="Produto 11">
+      <h3>Boné Williams</h3>
+      <p>R$ 149,99</p>
+      <button onclick="adicionarAoCarrinho('Boné Williams', 149,99, 'bone_willims.png')">Adicionar ao Carrinho</button>
+    </div>
+    
+    <div class="separador-categoria">Miniaturas</div>
+
+    <div class="produto-item">
+      <img src="miniatura_ferrari.png" alt="Produto 21">
+      <h3>Miniatura Ferrari</h3>
+      <p>R$ 149,99</p>
+      <button onclick="adicionarAoCarrinho('Miniatura Ferrari', 149,99, 'miniatura_ferrari.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="miniatura_sauber.png" alt="Produto 21">
+      <h3>Miniatura Sauber</h3>
+      <p>R$ 149,99</p>
+      <button onclick="adicionarAoCarrinho('Miniatura Sauber', 149,99, 'miniatura_sauber.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="miniatura_maclaren.png" alt="Produto 21">
+      <h3>Miniatura MacLaren</h3>
+      <p>R$ 149,99</p>
+      <button onclick="adicionarAoCarrinho('Miniatura MacLaren', 149,99, 'miniatura_maclaren.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="miniatura_mercerdes.png" alt="Produto 21">
+      <h3>Miniatura Mercedes</h3>
+      <p>R$ 149,99</p>
+      <button onclick="adicionarAoCarrinho('Miniatura Mercedes', 149,99, 'miniatura_mercerdes.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="miniatura_redbull.png" alt="Produto 21">
+      <h3>Miniatura Red Bull</h3>
+      <p>R$ 149,99</p>
+      <button onclick="adicionarAoCarrinho('Miniatura Red Bull', 149,99, 'miniatura_redbull.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="miniatura_williams.png" alt="Produto 21">
+      <h3>Miniatura Williams</h3>
+      <p>R$ 149,99</p>
+      <button onclick="adicionarAoCarrinho('Miniatura Williams', 149,99, 'miniatura_williams.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="miniatura_haas.png" alt="Produto 21">
+      <h3>Miniatura Haas</h3>
+      <p>R$ 149,99</p>
+      <button onclick="adicionarAoCarrinho('Miniatura Haas', 149,99, 'miniatura_haas.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="miniatura_astonMartin.png" alt="Produto 21">
+      <h3>Miniatura AstonMartin</h3>
+      <p>R$ 149,99</p>
+      <button onclick="adicionarAoCarrinho('Miniatura AstonMartin', 149,99, 'miniatura_astonMartin.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="miniatura_alpine.png" alt="Produto 21">
+      <h3>Miniatura Alpine</h3>
+      <p>R$ 149,99</p>
+      <button onclick="adicionarAoCarrinho('Miniatura Alpine', 149,99, 'miniatura_alpine.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="miniatura_bull.png" alt="Produto 21">
+      <h3>Miniatura F1 - 1</h3>
+      <p>R$ 149,99</p>
+      <button onclick="adicionarAoCarrinho('Miniatura Bulls', 149,99, 'miniatura_bull.png')">Adicionar ao Carrinho</button>
+    </div>
+
+    <div class="separador-categoria">Jaquetas</div>
+
+    <div class="produto-item">
+      <img src="jaqueta_ferrari.png" alt="Produto 31">
+      <h3>Jaqueta Ferrari</h3>
+      <p>R$ 499,99</p>
+      <button onclick="adicionarAoCarrinho('Jaqueta Ferrari', 499,99, 'jaqueta_ferrari.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="jaqueta_redbull.png" alt="Produto 31">
+      <h3>Jaqueta RedBull</h3>
+      <p>R$ 499,99</p>
+      <button onclick="adicionarAoCarrinho('Jaqueta RedBull', 499,99, 'jaqueta_redbull.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="jaqueta_Mercedes.png" alt="Produto 31">
+      <h3>Jaqueta Mercedes</h3>
+      <p>R$ 499,99</p>
+      <button onclick="adicionarAoCarrinho('Jaqueta Mercedes', 499,99, 'jaqueta_Mercedes.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="jaqueta_mclaren.png" alt="Produto 31">
+      <h3>Jaqueta MacLaren</h3>
+      <p>R$ 499,99</p>
+      <button onclick="adicionarAoCarrinho('Jaqueta MacLaren', 499,99, 'jaqueta_mclaren.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="jaqueta_astonMartin.png" alt="Produto 31">
+      <h3>Jaqueta AstonMartin</h3>
+      <p>R$ 499,99</p>
+      <button onclick="adicionarAoCarrinho('Jaqueta AstonMartin', 499,99, 'jaqueta_astonMartin.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="jaqueta_Williams.png" alt="Produto 31">
+      <h3>Jaqueta Williams</h3>
+      <p>R$ 499,99</p>
+      <button onclick="adicionarAoCarrinho('Jaqueta Williams', 499,99, 'jaqueta_Williams.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="jaqueta_haas.png" alt="Produto 31">
+      <h3>Jaqueta Haas</h3>
+      <p>R$ 499,99</p>
+      <button onclick="adicionarAoCarrinho('Jaqueta Haas', 499,99, 'jaqueta_haas.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="jaqueta_alpine.png" alt="Produto 31">
+      <h3>Jaqueta Alpine</h3>
+      <p>R$ 499,99</p>
+      <button onclick="adicionarAoCarrinho('Jaqueta Alpine', 499,99, 'jaqueta_alpine.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="jaqueta_sauber.png" alt="Produto 31">
+      <h3>Jaqueta Sauber</h3>
+      <p>R$ 499,99</p>
+      <button onclick="adicionarAoCarrinho('Jaqueta Sauber', 499,99, 'jaqueta_sauber.png')">Adicionar ao Carrinho</button>
+    </div>
+    <div class="produto-item">
+      <img src="jaqueta_bulls.png" alt="Produto 31">
+      <h3>Jaqueta RacingBulls</h3>
+      <p>R$ 499,99</p>
+      <button onclick="adicionarAoCarrinho('Jaqueta RacingBulls', 499,99, 'jaqueta_bulls.png')">Adicionar ao Carrinho</button>
+    </div>
+
+  </section>
+<script>
+  function adicionarAoCarrinho(nome, preco, imagem) {
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+    carrinho.push({ nome, preco, imagem });
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    alert(nome + " foi adicionado ao carrinho!");
+    atualizarContador();
+  }
+
+  function atualizarContador() {
+    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+    document.querySelector("nav a[href='carrinho.html']").textContent = "Carrinho (" + carrinho.length + ")";
+  }
+
+  atualizarContador();
+</script>
+
+
+</body>
+</html>

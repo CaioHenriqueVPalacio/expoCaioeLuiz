@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equipes da Fórmula 1 - 2025</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      color: #fff;
+      line-height: 1.6;
+      background: linear-gradient(45deg, #ff0000, #121212, #ff6600);
+      background-size: 400% 400%;
+      animation: gradientAnimation 10s ease infinite;
+      min-height: 100vh; /* Garantir que a página tenha altura mínima */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    header {
+      background-color: #e10600;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5em;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: #fff;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease-in-out;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+      color: #e10600;
+    }
+
+    .container {
+      padding: 30px 20px;
+      max-width: 1000px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .team {
+      margin-bottom: 40px;
+      padding: 20px;
+      border-bottom: 1px solid #333;
+      background-color: #222;
+      border-radius: 8px;
+    }
+
+    .team h2 {
+      color: #e10600;
+      font-size: 1.8em;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    .team img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 8px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      opacity: 0.9;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    .team img:hover {
+      transform: scale(1.03);
+      opacity: 1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background-color: #1e1e1e;
+      color: #aaa;
+      margin-top: 40px;
+    }
+
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Equipes da Fórmula 1 - 2025</h1>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="senna.html">Ayrton Senna</a>
+      <a href="hamilton.html">Lewis Hamilton</a>
+    </nav>
+  </header>
+
+  <div class="container">
+
+    <div class="team">
+      <h2>Alpine</h2>
+      <p><strong>Carro:</strong> A525</p>
+      <p><strong>Motor:</strong> Renault</p>
+      <p><strong>Pilotos:</strong> Jack Doohan e Pierre Gasly</p>
+      <p><strong>País:</strong> França</p>
+      <img src="foto1.png" alt="Alpine F1">
+    </div>
+
+    <div class="team">
+      <h2>Aston Martin</h2>
+      <p><strong>Carro:</strong> AMR25</p>
+      <p><strong>Motor:</strong> Mercedes</p>
+      <p><strong>Pilotos:</strong> Fernando Alonso e Lance Stroll</p>
+      <p><strong>País:</strong> Reino Unido</p>
+      <img src="foto2.png">
+    </div>
+
+    <div class="team">
+      <h2>Ferrari</h2>
+      <p><strong>Carro:</strong> SF-25</p>
+      <p><strong>Motor:</strong> Ferrari</p>
+      <p><strong>Pilotos:</strong> Charles Leclerc e Lewis Hamilton</p>
+      <p><strong>País:</strong> Itália</p>
+      <img src="foto3.png" alt="Ferrari F1">
+    </div>
+
+    <div class="team">
+      <h2>Haas</h2>
+      <p><strong>Carro:</strong> VF-25</p>
+      <p><strong>Motor:</strong> Ferrari</p>
+      <p><strong>Pilotos:</strong> Esteban Ocon e Oliver Bearman</p>
+      <p><strong>País:</strong> Estados Unidos</p>
+      <img src="foto4.png" alt="Haas F1">
+    </div>
+
+    <div class="team">
+      <h2>McLaren</h2>
+      <p><strong>Carro:</strong> MCL39</p>
+      <p><strong>Motor:</strong> Mercedes</p>
+      <p><strong>Pilotos:</strong> Lando Norris e Oscar Piastri</p>
+      <p><strong>País:</strong> Reino Unido</p>
+      <img src="foto5.png" alt="McLaren F1">
+    </div>
+
+    <div class="team">
+      <h2>Mercedes</h2>
+      <p><strong>Carro:</strong> W16</p>
+      <p><strong>Motor:</strong> Mercedes</p>
+      <p><strong>Pilotos:</strong> Andrea Kimi Antonelli e George Russell</p>
+      <p><strong>País:</strong> Alemanha</p>
+      <img src="foto6.png" alt="Mercedes F1">
+    </div>
+
+    <div class="team">
+      <h2>Racing Bulls</h2>
+      <p><strong>Carro:</strong> VCARB 02</p>
+      <p><strong>Motor:</strong> Honda RBPT</p>
+      <p><strong>Pilotos:</strong> Isack Hadjar e Yuki Tsunoda, Liam Lawson</p>
+      <p><strong>País:</strong> Itália</p>
+      <img src="foto7.png" alt="Racing Bulls F1">
+    </div>
+
+    <div class="team">
+      <h2>Red Bull Racing</h2>
+      <p><strong>Carro:</strong> RB21</p>
+      <p><strong>Motor:</strong> Honda RBPT</p>
+      <p><strong>Pilotos:</strong> Max Verstappen e Yuki Tsunoda</p>
+      <p><strong>País:</strong> Reino Unido</p>
+      <img src="foto8.png" alt="Red Bull Racing F1">
+    </div>
+
+    <div class="team">
+      <h2>Sauber</h2>
+      <p><strong>Carro:</strong> C45</p>
+      <p><strong>Motor:</strong> Ferrari</p>
+      <p><strong>Pilotos:</strong> Gabriel Bortoleto e Nico Hülkenberg</p>
+      <p><strong>País:</strong> Suíça</p>
+      <img src="foto9.png" alt="Sauber F1">
+    </div>
+
+    <div class="team">
+      <h2>Williams</h2>
+      <p><strong>Carro:</strong> FW47</p>
+      <p><strong>Motor:</strong> Mercedes</p>
+      <p><strong>Pilotos:</strong> Alexander Albon e Carlos Sainz Jr.</p>
+      <p><strong>País:</strong> Reino Unido</p>
+      <img src="foto10.png" alt="Williams F1">
+    </div>
+
+  </div>
+
+  <footer>
+    <p> Fórmula 1 Fanpage</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrinho - Fórmula 1</title>
+  <style>
+    body { 
+      font-family: Arial, sans-serif; 
+      background: #121212; 
+      color: #fff; 
+      margin: 0; 
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header { 
+      background: #e10600; 
+      padding: 20px; 
+      text-align: center; 
+      width: 100%; 
+    }
+    header h1 { margin: 0; }
+    .carrinho { 
+      padding: 20px; 
+      max-width: 900px;
+      width: 100%; 
+    }
+    .item { 
+      display: flex; 
+      align-items: center;
+      justify-content: space-between; 
+      margin-bottom: 20px;
+      background: #333; 
+      padding: 20px;
+      border-radius: 8px; 
+      position: relative;
+    }
+    .item img {
+      width: 80px;
+      height: 80px;
+      border-radius: 6px;
+      margin-right: 20px;
+      object-fit: cover;
+    }
+    .item-info {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .item span {
+      font-size: 1.1em;
+      color: #fff;
+    }
+    .remover {
+      background: none;
+      border: none;
+      color: #ff4d4d;
+      font-size: 1.4em;
+      font-weight: bold;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: color 0.3s;
+    }
+    .remover:hover {
+      color: #ff0000;
+    }
+    .total { 
+      font-size: 1.5em;
+      margin-top: 20px; 
+      text-align: center;
+    }
+    .finalizar {
+      display: block;
+      margin: 25px auto 0;
+      background: #e10600; 
+      color: white; 
+      border: none; 
+      padding: 15px 30px;
+      cursor: pointer; 
+      border-radius: 8px; 
+      font-size: 1.1em;
+    }
+    .finalizar:hover { 
+      background: #b40400; 
+    }
+    .adicionar-mais {
+      display: block;
+      margin: 20px auto;
+      background: #1e6e38; 
+      color: white; 
+      border: none; 
+      padding: 12px 25px;
+      cursor: pointer; 
+      border-radius: 8px; 
+      font-size: 1em;
+      transition: background 0.3s;
+    }
+    .adicionar-mais:hover { 
+      background: #155d2c; 
+    }
+    .quantidade {
+      display: flex;
+      align-items: center;
+      margin-left: 20px;
+    }
+    .quantidade button {
+      background: #444;
+      color: white;
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      font-size: 1.2em;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .quantidade span {
+      margin: 0 10px;
+      font-size: 1.1em;
+      min-width: 30px;
+      text-align: center;
+    }
+    .preco-total-item {
+      margin-left: 15px;
+      font-weight: bold;
+      color: #e10600;
+    }
+    .botoes-acao {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    /* Novos estilos para seleção de tamanho */
+    .tamanho-container {
+      margin-left: 20px;
+      display: flex;
+      align-items: center;
+    }
+    .tamanho-label {
+      margin-right: 8px;
+      font-size: 0.9em;
+      color: #ccc;
+    }
+    .seletor-tamanho {
+      background: #222;
+      color: white;
+      border: 1px solid #e10600;
+      border-radius: 4px;
+      padding: 5px 10px;
+      font-size: 0.9em;
+    }
+    .info-produto {
+      display: flex;
+      flex-direction: column;
+    }
+    .categoria-produto {
+      font-size: 0.8em;
+      color: #999;
+      margin-top: 4px;
+    }
+    .carrinho-vazio {
+      text-align: center;
+      padding: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Seu Carrinho</h1>
+    <nav>
+      <a href="index.html" style="color:white; margin-right:10px;">Início</a>
+      <a href="produtos.html" style="color:white;">Produtos</a>
+    </nav>
+  </header>
+
+  <section class="carrinho">
+    <h2 style="text-align:center;">Itens no Carrinho</h2>
+    <div id="itens"></div>
+    <p class="total" id="total">Total: R$ 0,00</p>
+    
+    <div class="botoes-acao">
+      <button class="adicionar-mais" onclick="irParaProdutos()">Adicionar Mais Produtos</button>
+      <button class="finalizar" onclick="finalizarCompra()">Finalizar Compra</button>
+    </div>
+  </section>
+
+  <script>
+    // Função para determinar a categoria do produto pelo nome
+    function determinarCategoria(nome) {
+      if (nome.includes('Camiseta') || nome.includes('Camisa')) {
+        return 'Camisa';
+      } else if (nome.includes('Jaqueta')) {
+        return 'Jaqueta';
+      } else if (nome.includes('Boné')) {
+        return 'Boné';
+      } else if (nome.includes('Miniatura')) {
+        return 'Miniatura';
+      }
+      return 'Produto';
+    }
+
+    function carregarCarrinho() {
+      let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+      let itensDiv = document.getElementById("itens");
+      let total = 0;
+      itensDiv.innerHTML = "";
+
+      if (carrinho.length === 0) {
+        itensDiv.innerHTML = `
+          <div class="carrinho-vazio">
+            <p style="font-size: 1.2em;">Seu carrinho está vazio</p>
+            <button class="adicionar-mais" onclick="irParaProdutos()">Adicionar Produtos</button>
+          </div>
+        `;
+        return;
+      }
+
+      carrinho.forEach((item, index) => {
+        // Garantir que cada item tenha uma quantidade (padrão: 1)
+        if (!item.quantidade) {
+          item.quantidade = 1;
+        }
+        
+        // Determinar categoria se não existir
+        if (!item.categoria) {
+          item.categoria = determinarCategoria(item.nome);
+        }
+        
+        // Definir tamanho padrão se não existir para jaquetas e camisas
+        if ((item.categoria === "Jaqueta" || item.categoria === "Camisa") && !item.tamanho) {
+          item.tamanho = "M";
+        }
+        
+        const precoTotalItem = item.preco * item.quantidade;
+        total += precoTotalItem;
+        
+        // Gerar opções de tamanho para jaquetas e camisas
+        const opcoesTamanho = (item.categoria === "Jaqueta" || item.categoria === "Camisa") ? `
+          <div class="tamanho-container">
+            <span class="tamanho-label">Tamanho:</span>
+            <select class="seletor-tamanho" onchange="alterarTamanho(${index}, this.value)">
+              <option value="PP" ${item.tamanho === "PP" ? "selected" : ""}>PP</option>
+              <option value="P" ${item.tamanho === "P" ? "selected" : ""}>P</option>
+              <option value="M" ${item.tamanho === "M" ? "selected" : ""}>M</option>
+              <option value="G" ${item.tamanho === "G" ? "selected" : ""}>G</option>
+              <option value="GG" ${item.tamanho === "GG" ? "selected" : ""}>GG</option>
+            </select>
+          </div>
+        ` : "";
+        
+        itensDiv.innerHTML += `
+          <div class="item">
+            <div class="item-info">
+              <img src="${item.imagem}" alt="${item.nome}">
+              <div class="info-produto">
+                <span>${item.nome} - R$ ${item.preco.toFixed(2)}</span>
+                <span class="categoria-produto">${item.categoria}</span>
+              </div>
+              <div class="quantidade">
+                <button onclick="alterarQuantidade(${index}, ${item.quantidade - 1})">-</button>
+                <span>${item.quantidade}</span>
+                <button onclick="alterarQuantidade(${index}, ${item.quantidade + 1})">+</button>
+              </div>
+              ${opcoesTamanho}
+              <span class="preco-total-item">R$ ${precoTotalItem.toFixed(2)}</span>
+            </div>
+            <button class="remover" onclick="removerItem(${index})">&times;</button>
+          </div>
+        `;
+      });
+
+      document.getElementById("total").textContent = "Total: R$ " + total.toFixed(2);
+      
+      // Atualizar o localStorage com quaisquer valores padrão que foram definidos
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    }
+
+    function alterarQuantidade(index, novaQuantidade) {
+      if (novaQuantidade < 1) return; // Não permite quantidade zero ou negativa
+      
+      let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+      carrinho[index].quantidade = novaQuantidade;
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
+      carregarCarrinho();
+    }
+
+    function alterarTamanho(index, novoTamanho) {
+      let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+      carrinho[index].tamanho = novoTamanho;
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
+      
+      // Feedback visual para o usuário
+      const feedback = document.createElement('div');
+      feedback.textContent = 'Tamanho alterado!';
+      feedback.style.position = 'fixed';
+      feedback.style.top = '20px';
+      feedback.style.right = '20px';
+      feedback.style.background = '#1e6e38';
+      feedback.style.color = 'white';
+      feedback.style.padding = '10px 15px';
+      feedback.style.borderRadius = '5px';
+      feedback.style.zIndex = '1000';
+      document.body.appendChild(feedback);
+      
+      setTimeout(() => {
+        document.body.removeChild(feedback);
+      }, 2000);
+    }
+
+    function removerItem(index) {
+      let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+      carrinho.splice(index, 1);
+      localStorage.setItem("carrinho", JSON.stringify(carrinho));
+      carregarCarrinho();
+    }
+
+    function finalizarCompra() {
+      alert("Compra finalizada com sucesso!");
+      localStorage.removeItem("carrinho");
+      carregarCarrinho();
+    }
+
+    function irParaProdutos() {
+      window.location.href = "produtos.html";
+    }
+
+    carregarCarrinho();
+  </script>
+</body>
+</html>
